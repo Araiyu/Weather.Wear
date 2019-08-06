@@ -1,0 +1,15 @@
+<h1>新規投稿</h1>
+	<% form_for(clothe) do |c| %>
+
+		<h4>気温</h4>
+		<% f.text_filed :temperature %>
+		<h4>天気</h4>
+		<% f.text_filed :weather %>
+		<h4>降水確率</h4>
+		<%f.text_filde :rainy_percent %>
+		<h4>服装</h4>
+		<% f.attachment_field  :clothes_image %>
+		<h4></h4>
+		<% f.text.area :introduction%>
+		<%f.submit'投稿'%>
+	<% end %>
