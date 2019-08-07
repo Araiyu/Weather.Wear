@@ -1,8 +1,32 @@
+
+
+
 <div class="container">
 	<div class="row">
-		<h3>index</h3>
-			<% @clothes.each do |c| %>
-				<span><% clothe.tempeature %></span>
-			<% end %>
+<table class="table table-bordered text-center" style="height: 100px;">
+      <thead class="thead thead-dark">
+        <tr>
+          <th class="align-middle">投稿</th>
+          <th class="align-middle">気温</th>
+          <th class="align-middle">天気</th>
+          <th class="align-middle">降水確率</th>
+          <th class="align-middle"></th>
+          <th class="align-middle"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @clothes.each do |c| %>
+        	<div class="row" style="margin:10px 0;">
+	            <div class="col-3">
+		          <tr>
+		            <td class="align-middle"><%= attachment_image_tag c, :clothes_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></td>
+		            <td class="align-middle"><%= c.temperature %></td>
+		            <td class="align-middle"><%= c.weather %></td>
+		            <td class="align-middle"><%= c.rainy_percent %><span>%</span></td>
+		          </tr>
+		      	</div>
+	  		</div>
+        <% end %>
+    </tbody>
 	</div>
 </div>

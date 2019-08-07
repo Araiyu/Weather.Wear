@@ -5,8 +5,9 @@ class ClothesController < ApplicationController
 	end
 
 	def create
-		@clothe = Clothe.new(clothe_params)
-		@clothe.save
+		clothe = Clothe.new(clothe_params)
+		clothe.user_id = current_user.id
+		clothe.save
 		redirect_to clothes_path
 	end
 
@@ -28,6 +29,6 @@ class ClothesController < ApplicationController
 
 private
 	def clothe_params
-		params.require(:clothe).permit(:temperature, :weather, :rainy_pecent, :clothes_image)
+		params.require(:clothe).permit(:temperature, :weather, :rainy_percent, :clothes_image)
 	end
 end
