@@ -1,5 +1,5 @@
 API_KEY = "b8751728158c4e7f85a34a92a0c2d5aa";
- 
+
 $(function(){
   $('#btn').on('click', function() {
     // 入力された都市名でWebAPIに天気情報をリクエスト

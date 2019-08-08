@@ -26,6 +26,11 @@ class ClothesController < ApplicationController
 	def update
 		clothe = Clothe.find(params[:id])
 	end
+	def destroy
+		@clothe = Clothe.find(params[:id])
+		@Clothe.destroy
+		redirect_to clothes_path
+	end
 
 private
 	def clothe_params
