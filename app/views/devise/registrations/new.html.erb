@@ -3,6 +3,10 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+<div class="field">
+    <%= f.label :プロフィール画像 %><br>
+    <%= f.attachment_field :user_image, autofocus: true, autocomplate: "プロフィール画像" %>
+  </div>
   <div class="field">
     <%= f.label :ニックネーム %><br>
     <%= f.text_field :nickname, autofocus: true, autocomplate: "ニックネーム" , placeholder:"ニックネーム"  %>

@@ -2,14 +2,33 @@
 <html>
   <head>
     <title>WeatherWear</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <header>
+    <h1>Site Name</h1>
+    <nav>
+      <ul>
+       <% if user_signed_in? %>
+        <li><%= link_to "home", clothes_path  %></li>
+        <li><%= link_to "投稿", new_clothe_path  %></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+       <li> <%= attachment_image_tag current_user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50' %></li>
+        <li><%= link_to current_user.nickname, user_path(current_user.id)%></%></li>
+        <% else %>
+        <li><%= link_to "home", clothes_path  %></li>
+        <li><%= link_to "ログイン", user_session_path  %></li>
+        <li><%= link_to "新規登録", new_user_registration_path %></li>
+      </ul>
+    <% end %>
+    </nav>
+  </header>
   <body>
     <%= yield %>
   </body>
+<footer>
+  <p>   CopyRight Weather.Wear.inc</p>
+</footer>
 </html>
