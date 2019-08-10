@@ -28,7 +28,7 @@ class ClothesController < ApplicationController
 	end
 	def destroy
 		@clothe = Clothe.find(params[:id])
-		@Clothe.destroy
+		@clothe.destroy
 		redirect_to clothes_path
 	end
 
