@@ -1,4 +1,6 @@
 class ClothesController < ApplicationController
+	API_KEY ="b8751728158c4e7f85a34a92a0c2d5aa"
+	BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
 
 	def new
 		@clothe = Clothe.new
@@ -12,7 +14,10 @@ class ClothesController < ApplicationController
 	end
 
 	def index
-		@clothes = Clothe.all
+		response = open(BASE_URL + "?q=Tokyo&APPID=#{API_KEY}")
+		@weather_d= JSON.parse(response.read)
+		current_temp =@weather_d["main"]["temp"].to_i - 273.15
+		@clothes = Clothe.where("(temperature >= ?)AND(temperature <= ?)",current_temp-5,current_temp+5)
 	end
 
 	def show
