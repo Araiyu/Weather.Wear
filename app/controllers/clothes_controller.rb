@@ -17,7 +17,8 @@ class ClothesController < ApplicationController
 		response = open(BASE_URL + "?q=Tokyo&APPID=#{API_KEY}")
 		@weather_d= JSON.parse(response.read)
 		current_temp =@weather_d["main"]["temp"].to_i - 273.15
-		@clothes = Clothe.where("(temperature >= ?)AND(temperature <= ?)",current_temp-5,current_temp+5)
+		@clothes_t = Clothe.where("(temperature >= ?)AND(temperature <= ?)",current_temp-10.5,current_temp+10.5)
+		@clothes = Clothe.all
 	end
 
 	def show

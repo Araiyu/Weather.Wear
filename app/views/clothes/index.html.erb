@@ -1,12 +1,13 @@
 <div class="container">
 	<div class="row">
-		<div class="top_weather">
-			<div class ="col-4"><%= @weather_d["main"]["temp"].to_i - 273  %></div>
-			<div class ="col-4"><%= @weather_d["main"]["temp_min"].to_i - 273 %></div>
-			<div class ="col-4"><%= @weather_d["main"]["temp_max"].to_i - 273 %></div>
+		<div class="top_weather" style ="font-size: 40px;">
+			<div class ="col-3 float-left now_temp"><%= @weather_d["main"]["temp"].to_i - 273  %></div>
+			<div class ="col-3 float-left min_temp"><%= @weather_d["main"]["temp_min"].to_i - 273 %></div>
+			<div class ="col-3 float-left max_temp"><%= @weather_d["main"]["temp_max"].to_i - 273 %></div>
 		</div>
 	</div>
-	<table style="height: 100px;">
+	<div class ="row">
+	<table>
 	      <thead>
 	        <tr>
 	          <th>投稿</th>
@@ -16,21 +17,21 @@
 	        </tr>
 	      </thead>
 	      <tbody>
-	        <% @clothes.each do |c| %>
+	        <% @clothes_t.first(6).each do |c| %><!--現在気温おすすめコーデ6件表示-->
 	        	<div class="row" style="margin:10px 0;">
-		            <div class="col-md-offset-10 col-md-10">
 			          <tr>
-			            <td class="align-middle"><%= attachment_image_tag c, :clothes_image, :fill, 250, 300, format: 'jpeg', fallback: "no_image.jpg" %></td>
-			            <td class="align-middle"><%= c.temperature %></td>
-			            <td class="align-middle"><%= c.weather %></td>
-			            <td class="align-middle"><%= c.rainy_percent %><span>%</span></td>
+			            <td class="float-left align-middle"><%= attachment_image_tag c, :clothes_image, :fill, 250, 300, format: 'jpeg', fallback: "no_image.jpg" %></td>
+			            <td class="float-left align-middle"><%= c.temperature %></td>
+			            <td class="float-left align-middle"><%= c.weather %></td>
+			            <td class="float-left align-middle"><%= c.user.nickname %></td>
 			          </tr>
-			      	</div>
 		  		</div>
 	        <% end %>
 	    </tbody>
+	    <
 	</table>
-	<div class="weather">
+</div>
+<!-- 	<div class="weather">
 	      <label>都市名：</label>
 	        <input id="cityname" type="text" size="14" maxlength="14" placeholder="Tokyo">
 	        <button id="btn">検索</button><br>
@@ -52,5 +53,5 @@
 	       <span id="weather"></span>
 	       <div id="icon"><img id="img"></div>
 	        <script src="weather.js"></script>
-	</div>
+	</div> -->
 </div>
