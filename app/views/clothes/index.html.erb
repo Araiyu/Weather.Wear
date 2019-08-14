@@ -1,35 +1,37 @@
 <div class="container">
 	<div class="row">
-		<div class="top_weather" style ="font-size: 40px;">
+		<div class="top_weather">
 			<div class ="col-3 float-left now_temp"><%= @weather_d["main"]["temp"].to_i - 273  %></div>
 			<div class ="col-3 float-left min_temp"><%= @weather_d["main"]["temp_min"].to_i - 273 %></div>
 			<div class ="col-3 float-left max_temp"><%= @weather_d["main"]["temp_max"].to_i - 273 %></div>
 		</div>
 	</div>
 	<div class ="row">
-	<table>
-	      <thead>
-	        <tr>
-	          <th>投稿</th>
-	          <th>気温</th>
-	          <th>天気</th>
-	          <th>降水確率</th>
-	        </tr>
-	      </thead>
-	      <tbody>
-	        <% @clothes_t.first(6).each do |c| %><!--現在気温おすすめコーデ6件表示-->
-	        	<div class="row" style="margin:10px 0;">
-			          <tr>
-			            <td class="float-left align-middle"><%= attachment_image_tag c, :clothes_image, :fill, 250, 300, format: 'jpeg', fallback: "no_image.jpg" %></td>
-			            <td class="float-left align-middle"><%= c.temperature %></td>
-			            <td class="float-left align-middle"><%= c.weather %></td>
-			            <td class="float-left align-middle"><%= c.user.nickname %></td>
-			          </tr>
-		  		</div>
-	        <% end %>
-	    </tbody>
-	    <
-	</table>
+		<div class="main">
+			<table>
+		    	<thead>
+			        <tr>
+			        <th>投稿</th>
+			        <th>気温</th>
+			        <th>天気</th>
+			        <th>降水確率</th>
+		        	</tr>
+		    	</thead>
+		    </table>
+		    <div class="main clothes">
+		        <% @clothes_t.first(6).each do |c| %><!--現在気温おすすめコーデ6件表示-->
+		        	<div class="row" style="margin:10px 0;" >
+				        <tr>
+				        <td class="float-left align-middle"><%= attachment_image_tag c, :clothes_image, :fill, 250, 300, format: 'jpeg', fallback: "no_image.jpg" %></td>
+				        <td class="float-left align-middle"><%= c.temperature %></td>
+				        <td class="float-left align-middle"><%= c.weather %></td>
+				        <td class="float-left align-middle"><%= c.user.nickname %></td>
+				        </tr>
+			  		</div>
+		        <% end %>
+		    </div>
+		</div>
+	</div>
 </div>
 <!-- 	<div class="weather">
 	      <label>都市名：</label>
@@ -54,4 +56,3 @@
 	       <div id="icon"><img id="img"></div>
 	        <script src="weather.js"></script>
 	</div> -->
-</div>
