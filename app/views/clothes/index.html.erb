@@ -8,7 +8,7 @@
 	</div>
 	<div class ="row">
 		<div class="main">
-			<table>
+<!-- 			<table>
 		    	<thead>
 			        <tr>
 			        <th>投稿</th>
@@ -17,42 +17,19 @@
 			        <th>降水確率</th>
 		        	</tr>
 		    	</thead>
-		    </table>
+		    </table> -->
 		    <div class="main clothes">
 		        <% @clothes_t.first(6).each do |c| %><!--現在気温おすすめコーデ6件表示-->
 		        	<div class="row" style="margin:10px 0;" >
 				        <tr>
-				        <td class="float-left align-middle"><%= attachment_image_tag c, :clothes_image, :fill, 250, 300, format: 'jpeg', fallback: "no_image.jpg" %></td>
+				        <td class="float-left align-middle"><%= attachment_image_tag c, :clothes_image, :fill, 200, 250, format: 'jpeg', fallback: "no_image.jpg" %></td>
 				        <td class="float-left align-middle"><%= c.temperature %></td>
 				        <td class="float-left align-middle"><%= c.weather %></td>
 				        <td class="float-left align-middle"><%= c.user.nickname %></td>
 				        </tr>
-			  		</div>
 		        <% end %>
+		        	</div>
 		    </div>
 		</div>
 	</div>
 </div>
-<!-- 	<div class="weather">
-	      <label>都市名：</label>
-	        <input id="cityname" type="text" size="14" maxlength="14" placeholder="Tokyo">
-	        <button id="btn">検索</button><br>
-	       <span>場所 :</span>
-	       <span id="place"></span><br>
-	       <span>最高気温 :</span>
-	       <span id="temp_max"></span>
-	       <span> ℃</span><br>
-	       <span>最低気温 :</span>
-	       <span id="temp_min"></span>
-	       <span> ℃</span><br>
-	       <span>湿度 :</span>
-	       <span id="humidity"></span>
-	       <span> %</span><br>
-	       <span>風速 :</span>
-	       <span id="speed"></span>
-	       <span> m/s</span><br>
-	       <span>天気 :</span>
-	       <span id="weather"></span>
-	       <div id="icon"><img id="img"></div>
-	        <script src="weather.js"></script>
-	</div> -->
