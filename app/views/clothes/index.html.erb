@@ -1,35 +1,57 @@
-<div class="container">
-	<div class="row">
-		<div class="top_weather">
-			<div class ="col-3 float-left now_temp"><%= @weather_d["main"]["temp"].to_i - 273  %></div>
-			<div class ="col-3 float-left min_temp"><%= @weather_d["main"]["temp_min"].to_i - 273 %></div>
-			<div class ="col-3 float-left max_temp"><%= @weather_d["main"]["temp_max"].to_i - 273 %></div>
+<div class = "container-fluid">
+	<div class = "row">
+		<div class = "main_header">
+			<div class = "col-2 float-left weather-img">
+				<img src= <%= @weather_img %>></img>
+			</div>
+			<div class = "col-3 float-left now_temp">
+				<span>現在気温</span><br>
+				<%= @weather_d["main"]["temp"].to_i - 273  %>℃
+			</div>
+			<div class = "col-3 float-left min_temp">
+				<span>最低気温</span><br>
+				<%= @weather_d["main"]["temp_min"].to_i - 273 %>℃
+			</div>
+			<div class = "col-3 float-left max_temp">
+				<span>最高気温</span><br>
+				<%= @weather_d["main"]["temp_max"].to_i - 273 %>℃
+			</div>
 		</div>
 	</div>
-	<div class ="row">
-		<div class="main">
-<!-- 			<table>
-		    	<thead>
-			        <tr>
-			        <th>投稿</th>
-			        <th>気温</th>
-			        <th>天気</th>
-			        <th>降水確率</th>
-		        	</tr>
-		    	</thead>
-		    </table> -->
-		    <div class="main clothes">
-		        <% @clothes_t.first(6).each do |c| %><!--現在気温おすすめコーデ6件表示-->
-		        	<div class="row" style="margin:10px 0;" >
-				        <tr>
-				        <td class="float-left align-middle"><%= attachment_image_tag c, :clothes_image, :fill, 200, 250, format: 'jpeg', fallback: "no_image.jpg" %></td>
-				        <td class="float-left align-middle"><%= c.temperature %></td>
-				        <td class="float-left align-middle"><%= c.weather %></td>
-				        <td class="float-left align-middle"><%= c.user.nickname %></td>
-				        </tr>
-		        <% end %>
-		        	</div>
-		    </div>
-		</div>
+	<h3>今日の気温に近いコーディネート</h3>
+	<div class ="container">
+        <div class="row" style="margin:10px 0;" >
+        	<% @clothes_t.first(6).each do |c| %><!--現在気温おすすめコーデ6件表示-->
+	        	<div class = "col-4  main clothes">
+			        <div class = "main-clohtes">
+			        	<%= link_to (clothe_path(c.id)) do %>
+			        	<%= attachment_image_tag c, :clothes_image, :fill, 200, 250, format: 'jpeg', fallback: "no_image.jpg" %><% end %>
+			        </div>
+			        <div class = "main_sub">
+				        <div class ="float-left m_now_temp"><%= c.temperature %>℃</div>
+				        <div class ="col-3 float-left m_weather"><%= c.user.tall %>cm</div>
+				        <div class ="col-3 float-left m_nickname"><%= c.user.nickname %></div>
+			        </div>
+			    </div>
+    		<% end %>
+	    </div>
+	</div>
+	<h2></h2>
+	<div class ="container">
+        <div class="row" style="margin:10px 0;" >
+        	<% @clothes.reverse.each do |c| %><!--新着コーディネート-->
+	        	<div class = "col-4  main clothes">
+			        <div class = "main-clohtes">
+			        	<%= link_to (clothe_path(c.id)) do %>
+			        	<%= attachment_image_tag c, :clothes_image, :fill, 200, 250, format: 'jpeg', fallback: "no_image.jpg" %></div><% end %>
+			        <div class = "main_sub">
+				        <div class ="float-left m_now_temp"><%= c.temperature %>℃</div>
+				        <div class ="col-3 float-left m_weather"><%= c.user.tall %>cm</div>
+				        <div class ="col-3 float-left m_weather"><%= c.weather %></div>
+				        <div class ="col-3 float-left m_nickname"><%= c.user.nickname %></div>
+			        </div>
+			    </div>
+    		<% end %>
+	    </div>
 	</div>
 </div>

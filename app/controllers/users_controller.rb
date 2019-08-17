@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+
+	def index
+		@user = User.all
+	end
+
 	def show
 		@user = User.find(params[:id])
 	end
@@ -18,6 +23,7 @@ class UsersController < ApplicationController
 			render :edit
 		end
 	end
+
 	def destroy
 		user =User.find(params[:id])
 		if user.destroy
@@ -25,8 +31,8 @@ class UsersController < ApplicationController
 		end
 	end
 
-	private
-		def user_params
-			params.require(:user).permit( :nickname, :gender, :tall, :introduction, :email)
-		end
+private
+	def user_params
+		params.require(:user).permit( :nickname, :gender, :tall, :introduction, :email)
+	end
 end

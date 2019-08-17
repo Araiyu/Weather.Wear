@@ -1,8 +1,12 @@
 class ClothesController < ApplicationController
 	API_KEY ="b8751728158c4e7f85a34a92a0c2d5aa"
 	BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
+	IMG_URL = "http://openweathermap.org/img/w/"
 
 	def new
+		response = open(BASE_URL + "?q=Tokyo&APPID=#{API_KEY}")
+		@weather_d= JSON.parse(response.read)
+		current_temp = @weather_d["main"]["temp"].to_i - 273.15
 		@clothe = Clothe.new
 	end
 
@@ -16,9 +20,11 @@ class ClothesController < ApplicationController
 	def index
 		response = open(BASE_URL + "?q=Tokyo&APPID=#{API_KEY}")
 		@weather_d= JSON.parse(response.read)
-		current_temp =@weather_d["main"]["temp"].to_i - 273.15
-		@clothes_t = Clothe.where("(temperature >= ?)AND(temperature <= ?)",current_temp-10.5,current_temp+10.5)
+		p @weather_d
+		current_temp = @weather_d["main"]["temp"].to_i - 273.15
+		@clothes_t = Clothe.where("(temperature >= ?)AND(temperature <= ?)",current_temp -3.5,current_temp +3.5)
 		@clothes = Clothe.all
+		@weather_img = IMG_URL + @weather_d["weather"].first["icon"] + ".png"
 	end
 
 	def show

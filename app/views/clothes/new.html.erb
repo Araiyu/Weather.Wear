@@ -1,27 +1,16 @@
  <script src="jquery-3.4.1.min.js"></script>
 	<script src="weather.js"></script>
-	<div class="weather">
-	      <label>都市名：</label>
-	        <input id="cityname" type="text" size="14" maxlength="14" placeholder="Tokyo">
-	        <button id="btn">検索</button><br>
-	       <span>場所 :</span>
-	       <span id="place"></span><br>
-	       <span>最高気温 :</span>
-	       <span id="temp_max"></span>
-	       <span> ℃</span><br>
-	       <span>最低気温 :</span>
-	       <span id="temp_min"></span>
-	       <span> ℃</span><br>
-	       <span>湿度 :</span>
-	       <span id="humidity"></span>
-	       <span> %</span><br>
-	       <span>天気 :</span>
-	       <span id="weather"></span>
-	       <div id="icon"><img id="img"></div>
+<div class ="container-fluid">
+	<div class ="row">
+		<div class ="main_header">
+			<div class ="col-3 float-left now_temp"><%= @weather_d["main"]["temp"].to_i - 273  %></div>
+			<div class ="col-3 float-left min_temp"><%= @weather_d["main"]["temp_min"].to_i - 273 %></div>
+			<div class ="col-3 float-left max_temp"><%= @weather_d["main"]["temp_max"].to_i - 273 %></div>
+		</div>
 <h1>新規投稿</h1>
 	<%= form_for(@clothe, url:clothes_path) do |f| %>
 		<h4>気温</h4>
-		<%= f.text_field :temperature %>
+		<%= f.text_field :temperature, placeholder:@weather_d["main"]["temp"].to_i - 273 %>
 		<h4>天気</h4>
 		<%= f.text_field :weather %>
 		<h4>降水確率</h4>

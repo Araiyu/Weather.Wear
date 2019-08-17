@@ -1,0 +1,11 @@
+clothes#show
+<div class = "container-fluid">
+	<div class = "row">
+		<div class = "main_header">
+			<div class ="profile_imag"><%= attachment_image_tag @clothe.user.user_image, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50' %>
+			</div>
+		</div>
+	</div>
+</div>
+<%= attachment_image_tag current_user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50' %></li>
+        <li><%= link_to current_user.nickname, user_path(current_user.id)%></%></li>
