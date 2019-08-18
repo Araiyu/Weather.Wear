@@ -1,0 +1,12 @@
+clothe#edit
+<%= form_for(@clothe) do |f| %>
+	
+	<%= f.attachment_field :clothes_image %>
+	<h4>気温</h4>
+	<%= f.text_field :temperature %>
+	<h4>天気</h4>
+	<%= f.text_field :weather %>
+	<h4>投稿コメント</h4>
+	<%= f.text_area :clothe_text %>
+	<%= f.submit '更新' %>
+	<% end %>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WeatherWear</title>
+    <title>Weather.Wear</title>
       <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,17 +9,19 @@
   </head>
   <div class="contier-fiuid">
   <header>
-    <h1>Site Name</h1>
+    <h1>Weather.Wear</h1>
     <nav>
       <ul>
        <% if user_signed_in? %>
         <li class=" float-left"><%= link_to "home", clothes_path  %></li>
+        <li class=" float-left"><%= link_to "User一覧", users_path  %></li>
         <li class=" float-left"><%= link_to "投稿", new_clothe_path  %></li>
         <li class=" float-left"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
        <li class=" float-left"> <%= attachment_image_tag current_user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50' %></li>
         <li><%= link_to current_user.nickname, user_path(current_user.id)%></%></li>
         <% else %>
         <li class=" float-left"><%= link_to "home", clothes_path  %></li>
+        <li class=" float-left"><%= link_to "User一覧", users_path  %></li>
         <li class=" float-left"><%= link_to "ログイン", user_session_path  %></li>
         <li class=" float-left"><%= link_to "新規登録", new_user_registration_path %></li>
       </ul>

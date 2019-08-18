@@ -9,4 +9,32 @@ clothes#show
 			</div>
 		</div>
 	</div>
+	<div class = "conteiner">
+		<div class= "main_clothes">
+			<div class="row">
+				<div class ="col-6 profile_img">
+					<%= attachment_image_tag @clothe, :clothes_image,:fill, 450, 600, format: 'jpeg' %>
+				</div>
+				<div class="col-6 clothe_text">
+					<%= @clothe.clothe_text %>
+					<div class="edit-delet">
+						<% if @clothe.user == current_user %>
+						<%= link_to "編集", edit_clothe_path(@clothe) %>
+						<% end %>
+						<% if @clothe.user == current_user %>
+						<%= link_to "削除", clothes_path, method: :delete　%>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
 </div>
