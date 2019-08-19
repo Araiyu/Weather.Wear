@@ -3,38 +3,40 @@ clothes#show
 	<div class = "row">
 		<div class = "main_header">
 			<div class ="float-left profile_imag"><%= attachment_image_tag @clothe.user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50' %></div>
-				<div class ="float-left m_now_temp"><%= @clothe.temperature %>℃</div>
-				<div class ="float-left m_weather"><%= @clothe.user.tall %>cm</div>
-				<div class ="float-left m_nickname"><%= @clothe.user.nickname %></div>
-			</div>
+			<div class ="float-left m_now_temp"><%= @clothe.temperature %>℃</div>
+			<div class ="float-left m_weather"><%= @clothe.user.tall %>cm</div>
+			<div class ="float-left m_nickname"><%= @clothe.user.nickname %></div>
 		</div>
 	</div>
-	<div class = "conteiner">
-		<div class= "main_clothes">
-			<div class="row">
-				<div class ="col-6 profile_img">
-					<%= attachment_image_tag @clothe, :clothes_image,:fill, 450, 600, format: 'jpeg' %>
-				</div>
-				<div class="col-6 clothe_text">
-					<%= @clothe.clothe_text %>
-					<div class="edit-delet">
-						<% if @clothe.user == current_user %>
+</div>
+<div class = "conteiner">
+	<div class= "main_clothes">
+		<div class="row">
+			<div class ="col-6 profile_img">
+				<%= attachment_image_tag @clothe, :clothes_image,:fill, 450, 600, format: 'jpeg' %>
+			</div>
+			<div class="col-6 clothe_text">
+				<%= @clothe.clothe_text %>
+				<div class="edit-delet">
+					<% if @clothe.user == current_user %>
 						<%= link_to "編集", edit_clothe_path(@clothe) %>
-						<% end %>
-						<% if @clothe.user == current_user %>
-						<%= link_to "削除", clothes_path, method: :delete　%>
-						<% end %>
-					</div>
+					<% end %>
+					<% if @clothe.user == current_user %>
+						<%= link_to "削除", clothe_path(@clothe), method: :delete %>
+					<% end %>
 				</div>
 			</div>
 		</div>
+		<div class="clothes-comment">
+			<%= @comments.each do |comment| %>
+				<% comment.created_at.strftime('%Y/%m/%d') %>
+				<% comment.review %>
+			<% end %>
+
+			<%= form_for [@clothe, @comment] do |f| %>
+				<%= f.text_area :review %>
+				<%= f.submit "コメント" %>
+			<% end %>
+		</div>
 	</div>
-
-
-
-
-
-
-
-
 </div>
