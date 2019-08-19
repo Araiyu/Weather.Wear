@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :clothes do
   resources :comments, only: [:create, :destroy]
+  resources :favorites, only: [:create, :destroy]
   end
    get 'top' => 'user#top'
   root 'clothes#index'

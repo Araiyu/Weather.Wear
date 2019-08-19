@@ -27,8 +27,20 @@ clothes#show
 				</div>
 			</div>
 		</div>
+	<% if @clothe.favorited_by?(current_user) %>
+			<%=link_to clothe_favorites_path(@clothe), method: :delete do %>
+			<%=@cltohe.favorite.count %>いいね
+		<% end %>
+	<% else %>
+		<%=link_to clothe_favorite_path(@clothe),method: :post do %>
+			<%= @clothe.favorite.cunt %>いいね
+		<% end %>
+	<% end %>
+
 		<div class="clothes-comment"><!-- コメント部分 -->
 			<% @comment.each do |comment| %>
+			<%= attachment_image_tag comment.user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50' %>
+				<%= comment.user.nickname %>
 				<%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
 				<%= comment.review %>
 			<% end %>
