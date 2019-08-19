@@ -28,6 +28,8 @@ class ClothesController < ApplicationController
 
 	def show
 		@clothe = Clothe.find(params[:id])
+		@comments =Comment.new
+		@comment = @clothe.comments
 	end
 
 	def edit

@@ -3,8 +3,9 @@ class CommentsController < ApplicationController
 	def create
 		@clothe = Clothe.find(params[:clothe_id])
 		@comment = Comment.new(comment_params)
-		@comment.clothe_id = @clothes.clothe_id
-		@commnet.save
+		@comment.clothe_id = @clothe.id
+		@comment.user_id = current_user.id
+		@comment.save
 		redirect_to clothe_path(@comment.clothe_id)
 	end
 	def destroy
@@ -12,6 +13,6 @@ class CommentsController < ApplicationController
 
 	private
 	def comment_params
-		params.requore(:comment).permit(:review,:clothe_id)
+		params.require(:comment).permit(:clothe_id,:review)
 	end
 end

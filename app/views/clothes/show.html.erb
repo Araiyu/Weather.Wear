@@ -27,13 +27,13 @@ clothes#show
 				</div>
 			</div>
 		</div>
-		<div class="clothes-comment">
-			<%= @comments.each do |comment| %>
-				<% comment.created_at.strftime('%Y/%m/%d') %>
-				<% comment.review %>
+		<div class="clothes-comment"><!-- コメント部分 -->
+			<% @comment.each do |comment| %>
+				<%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+				<%= comment.review %>
 			<% end %>
 
-			<%= form_for [@clothe, @comment] do |f| %>
+			<%= form_for [@clothe, @comments] do |f| %>
 				<%= f.text_area :review %>
 				<%= f.submit "コメント" %>
 			<% end %>
