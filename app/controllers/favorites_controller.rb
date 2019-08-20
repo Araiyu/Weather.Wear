@@ -4,12 +4,16 @@ class FavoritesController < ApplicationController
 		clothe = Clothe.find(params[:clothe_id])
 		favorite = current_user.favorite.new(clothe_id: clothe.id)
 		favoite.save
-		redirect_to clothe_path(clothe_image)
+		redirect_to clothe_path(clothe)
 	end
 	def destory
-		clothe =Clothe.find(params[:clothe_image_id: clothe.id])
+		clothe = Clothe.find(params[:clothe_id])
 		favorite = current_user.favorites.find_by(clothe_id: clothe.id)
 		favorite.destory
 		redirect_to clothe_path(clothe)
+	end
+private
+	def comment_params
+		params.require(:comment).permit(:clothe_id)
 	end
 end
