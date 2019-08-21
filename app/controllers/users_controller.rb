@@ -5,13 +5,14 @@ class UsersController < ApplicationController
 
 	def index
 		response = open(BASE_URL + "?q=Tokyo&APPID=#{API_KEY}")
-		@weather_d= JSON.parse(response.read)
+		@weather_d = JSON.parse(response.read)
 		current_temp = @weather_d["main"]["temp"].to_i - 273.15
 		@user = User.all
 	end
 
 	def show
 		@user = User.find(params[:id])
+		@favo_clothes = @user.favorite_clothes # @userがお気に入りした投稿
 	end
 
 	def edit

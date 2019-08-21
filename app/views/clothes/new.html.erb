@@ -1,8 +1,9 @@
- <script src="jquery-3.4.1.min.js"></script>
-	<script src="weather.js"></script>
 <div class ="container-fluid">
 	<div class ="row">
 		<div class ="main_header">
+			<div class = "col-2 float-left weather-img">
+				<img src= <%= @weather_img %>></img>
+			</div>
 			<div class ="col-3 float-left now_temp"><%= @weather_d["main"]["temp"].to_i - 273  %></div>
 			<div class ="col-3 float-left min_temp"><%= @weather_d["main"]["temp_min"].to_i - 273 %></div>
 			<div class ="col-3 float-left max_temp"><%= @weather_d["main"]["temp_max"].to_i - 273 %></div>
@@ -12,7 +13,7 @@
 		<h4>気温</h4>
 		<%= f.text_field :temperature, placeholder:@weather_d["main"]["temp"].to_i - 273 %>
 		<h4>天気</h4>
-		<%= f.text_field :weather %>
+		<%= f.select :weather,[["晴れ","晴れ"],["くもり","くもり"],["雨","雨"],["雪","雪"]], :prompt => "選択してください" %>
 		<h4>服装</h4>
 		<%= f.attachment_field :clothes_image %>
 		<h4>コメント</h4>

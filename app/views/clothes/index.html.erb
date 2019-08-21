@@ -18,11 +18,11 @@
 			</div>
 		</div>
 	</div>
-	<h3>今日の気温に近いコーディネート</h3>
 	<div class ="container">
+		<h3>今日の気温に近いコーディネート</h3>
         <div class="row" style="margin:10px 0;" >
         	<% @clothes_t.first(6).each do |c| %><!--現在気温おすすめコーデ6件表示-->
-	        	<div class = "col  main clothes">
+	        	<div class = "col-4  main clothes">
 			        <div class = "main-clohtes">
 			        	<%= link_to (clothe_path(c.id)) do %>
 			        	<%= attachment_image_tag c, :clothes_image, :fill, 200, 250, format: 'jpeg', fallback: "no_image.jpg" %><% end %>

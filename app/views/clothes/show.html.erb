@@ -1,11 +1,16 @@
-clothes#show
 <div class = "container-fluid">
 	<div class = "row">
 		<div class = "main_header">
-			<div class ="float-left profile_imag"><%= attachment_image_tag @clothe.user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50', class: "p_image" %></div>
+			<div class ="float-left profile_imag">
+				<%= link_to (user_path(@clothe.user.id)) do %>
+				<%= attachment_image_tag @clothe.user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50', class: "p_image" %>
+					<% end %>
+			</div>
+			<div class ="float-left m_nickname">
+				<%= link_to (user_path(@clothe.user.id)) do %>
+				<%= @clothe.user.nickname %><% end %></div>
 			<div class ="float-left m_now_temp"><%= @clothe.temperature %>℃</div>
 			<div class ="float-left m_weather"><%= @clothe.user.tall %>cm</div>
-			<div class ="float-left m_nickname"><%= @clothe.user.nickname %></div>
 		</div>
 	</div>
 </div>
@@ -27,7 +32,7 @@ clothes#show
 				</div>
 			</div>
 		</div>
-	<% if @clothe.favorited_by?(current_user) %>
+	<% if @clothe.favorited_by?(current_user) %><!-- いいね機能 -->
 			<%= link_to clothe_favorites_path(@clothe), method: :delete do %>
 			 <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
 			<%= @clothe.favorites.count %>いいね
@@ -38,7 +43,6 @@ clothes#show
 			<%= @clothe.favorites.count %>いいね
 		<% end %>
 	<% end %>
-
 		<div class="clothes-comment"><!-- コメント部分 -->
 			<% @comment.each do |comment| %>
 			<%= attachment_image_tag comment.user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50' %>

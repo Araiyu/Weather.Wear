@@ -8,6 +8,7 @@ class ClothesController < ApplicationController
 		@weather_d= JSON.parse(response.read)
 		current_temp = @weather_d["main"]["temp"].to_i - 273.15
 		@clothe = Clothe.new
+		@weather_img = IMG_URL + @weather_d["weather"].first["icon"] + ".png"
 	end
 
 	def create
