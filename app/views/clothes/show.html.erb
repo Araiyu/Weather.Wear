@@ -2,7 +2,7 @@ clothes#show
 <div class = "container-fluid">
 	<div class = "row">
 		<div class = "main_header">
-			<div class ="float-left profile_imag"><%= attachment_image_tag @clothe.user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50' %></div>
+			<div class ="float-left profile_imag"><%= attachment_image_tag @clothe.user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50', class: "p_image" %></div>
 			<div class ="float-left m_now_temp"><%= @clothe.temperature %>℃</div>
 			<div class ="float-left m_weather"><%= @clothe.user.tall %>cm</div>
 			<div class ="float-left m_nickname"><%= @clothe.user.nickname %></div>
@@ -29,10 +29,12 @@ clothes#show
 		</div>
 	<% if @clothe.favorited_by?(current_user) %>
 			<%= link_to clothe_favorites_path(@clothe), method: :delete do %>
-			<%= @cltohe.favorites.count %>いいね
+			 <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+			<%= @clothe.favorites.count %>いいね
 		<% end %>
 	<% else %>
-		<%= link_to clothe_favorite_path(@clothe),method: :post do %>
+		<%= link_to clothe_favorites_path(@clothe),method: :post do %>
+		<i class="fa fa-heart-o" aria-hidden="true"></i>
 			<%= @clothe.favorites.count %>いいね
 		<% end %>
 	<% end %>

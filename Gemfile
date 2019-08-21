@@ -70,3 +70,4 @@ gem 'jquery-rails'
 gem "paranoia"
 gem 'cocoon'
 gem 'pry-rails'
+gem 'font-awesome-rails'

@@ -13,17 +13,33 @@
     <nav>
       <ul>
        <% if user_signed_in? %>
-        <li class=" float-left"><%= link_to "home", clothes_path  %></li>
-        <li class=" float-left"><%= link_to "User一覧", users_path  %></li>
-        <li class=" float-left"><%= link_to "投稿", new_clothe_path  %></li>
-        <li class=" float-left"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-       <li class=" float-left"> <%= attachment_image_tag current_user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50' %></li>
+        <li class=" float-left">
+          <%= fa_icon("home") %>
+          <%= link_to "home", clothes_path  %></li>
+        <li class=" float-left">
+           <%= fa_icon("users") %>
+          <%= link_to "User一覧", users_path  %></li>
+        <li class=" float-left">
+           <%= fa_icon("pen") %>
+          <%= link_to "投稿", new_clothe_path  %></li>
+        <li class=" float-left">
+          <%= fa_icon("sign-out-alt") %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+       <li class=" float-left"> <%= attachment_image_tag current_user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50', class: "p_image" %></li>
         <li><%= link_to current_user.nickname, user_path(current_user.id)%></%></li>
         <% else %>
-        <li class=" float-left"><%= link_to "home", clothes_path  %></li>
-        <li class=" float-left"><%= link_to "User一覧", users_path  %></li>
-        <li class=" float-left"><%= link_to "ログイン", user_session_path  %></li>
-        <li class=" float-left"><%= link_to "新規登録", new_user_registration_path %></li>
+        <li class=" float-left">
+          <%= fa_icon("home") %>
+          <%= link_to "home", clothes_path  %></li>
+        <li class=" float-left">
+          <%= fa_icon("users") %>
+          <%= link_to "User一覧", users_path  %></li>
+        <li class=" float-left">
+          <%= fa_icon("sign-in-alt") %>
+          <%= link_to "ログイン", user_session_path  %></li>
+        <li class=" float-left">
+          <%= fa_icon("user-plus") %>
+          <%= link_to "新規登録", new_user_registration_path %></li>
       </ul>
     <% end %>
     </nav>
