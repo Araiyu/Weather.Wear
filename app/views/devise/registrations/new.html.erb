@@ -13,7 +13,7 @@
   </div>
   <div class="field">
     <%= f.label :性別 %><br>
-    <%= f.text_field :gender, autofocus: true,autocomplate: "性別", placeholder:"性別" %>
+    <%= f.select :gender, [["男性","男性"],["女性","女性"]], :prompt => "性別" %>
   </div>
     <div class="field">
     <%= f.label :身長 %><br>
