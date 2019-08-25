@@ -31,7 +31,9 @@
 							<% end %>
 						<% end %>
 				</div>
+			</div>
 				<div class="col-5 clothe_text">
+					<%= simple_format(@clothe.clothe_text) %>
 					<div class="edit-delet">
 						<% if @clothe.user == current_user %>
 							<%= link_to "編集", edit_clothe_path(@clothe) %>
@@ -40,9 +42,7 @@
 							<%= link_to "削除", clothe_path(@clothe), method: :delete %>
 						<% end %>
 					</div>
-					<%= @clothe.clothe_text %>
 				</div>
-			</div>
 		<div class="clothes-comment"><!-- コメント部分 -->
 			<% @comment.each do |comment| %>
 				<%= attachment_image_tag comment.user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50' %>

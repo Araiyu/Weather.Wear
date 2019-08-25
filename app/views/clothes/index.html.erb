@@ -42,7 +42,7 @@
         <div class="row" style="margin:10px 0;" >
         	<% @clothes.reverse.each do |c| %><!--新着コーディネート-->
 	        	<div class = "col-4">
-			        <div class = "card" style="margin-top: 30px;>
+			        <div class = "card" style="margin-top: 30px;">
 			        	<%= link_to (clothe_path(c.id)) do %>
 			        	<%= attachment_image_tag c, :clothes_image, :fill, 350, 400, format: 'jpeg', fallback: "no_image.jpg",class: "img-fluid" %>
 			        	<% end %>
