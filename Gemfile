@@ -71,3 +71,4 @@ gem "paranoia"
 gem 'cocoon'
 gem 'pry-rails'
 gem 'font-awesome-rails'
+gem 'font-awesome-sass', '~> 5.2.0'

@@ -9,6 +9,10 @@ class CommentsController < ApplicationController
 		redirect_to clothe_path(@comment.clothe_id)
 	end
 	def destroy
+		@clothe = Clothe.find(params[:clothe_id])
+		@comment = @clothe.commnets.find(params[:id])
+		@comment.destroy
+		redirect_to clothe_path(@clothe)
 	end
 
 	private
