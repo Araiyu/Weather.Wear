@@ -12,10 +12,12 @@
   <div class="contier-fiuid">
      <div class="row">
       <div class="col-4">
-        <h1>Weather.Wear</h1>
+        <p><%= link_to (clothes_path) do %>
+        <%= image_tag 'logo.jpg', :size => '125x125' %>
+        <% end %>
       </div>
       <div class="col-8">
-        <div class="pull-right">
+        <div class="pull-right" , style ="margin-top: 20px;">
           <nav>
             <ul>
              <% if user_signed_in? %>
@@ -59,6 +61,8 @@
     <%= yield %>
   </body>
 <footer>
-  <p>   CopyRight Weather.Wear.inc</p>
+  <div class="pull-right">
+    <p>   CopyRight Weather.Wear.inc</p>
+  </div>
 </footer>
 </html>

@@ -1,7 +1,7 @@
 <div class = "container-fluid">
 	<div class = "row">
 		<div class = "main_header">
-			<div class ="float-left profile_imag", style = "margin:0 10px 10px 10px">
+			<div class ="float-left profile_imag", style = "margin:0 10px 10px 10px,">
 				<%= link_to (user_path(@clothe.user.id)) do %>
 				<%= attachment_image_tag @clothe.user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50', class: "p_image" %>
 					<% end %>
