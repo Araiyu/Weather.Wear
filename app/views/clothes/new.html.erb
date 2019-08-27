@@ -1,12 +1,21 @@
 <div class ="container-fluid">
 	<div class ="row">
-		<div class ="main_header">
+		<div class = "main_header">
 			<div class = "col-2 float-left weather-img">
-				<img src= <%= @weather_img %>></img>
+				<img src="<%=@weather_img%>" class="weather_icon" ></img>
 			</div>
-			<div class ="col-3 float-left now_temp"><%= @weather_d["main"]["temp"].to_i - 273  %></div>
-			<div class ="col-3 float-left min_temp"><%= @weather_d["main"]["temp_min"].to_i - 273 %></div>
-			<div class ="col-3 float-left max_temp"><%= @weather_d["main"]["temp_max"].to_i - 273 %></div>
+			<div class = "col-3 float-left now_temp">
+				<span>現在気温</span><br>
+				<%= @weather_d["main"]["temp"].to_i - 273  %>℃
+			</div>
+			<div class = "col-3 float-left min_temp">
+				<span>最低気温</span><br>
+				<%= @weather_d["main"]["temp_min"].to_i - 273 %>℃
+			</div>
+			<div class = "col-3 float-left max_temp">
+				<span>最高気温</span><br>
+				<%= @weather_d["main"]["temp_max"].to_i - 273 %>℃
+			</div>
 		</div>
 <h1>新規投稿</h1>
 	<%= form_for(@clothe, url:clothes_path) do |f| %>
@@ -20,3 +29,5 @@
 		<%= f.text_area :clothe_text %>
 		<%= f.submit '投稿'%>
 	<% end %>
+	</div>
+</div>

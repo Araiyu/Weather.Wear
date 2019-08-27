@@ -2,7 +2,7 @@
 	<div class = "row">
 		<div class = "main_header">
 			<div class = "col-2 float-left weather-img">
-				<img src="<%=@weather_img%>" class="icon" ></img>
+				<img src="<%=@weather_img%>" class="weather_icon" ></img>
 			</div>
 			<div class = "col-3 float-left now_temp">
 				<span>現在気温</span><br>
@@ -18,27 +18,29 @@
 			</div>
 		</div>
 	</div>
-	<div class ="container">
+	<br>
+	<div class ="container", style="border: 2px dashed #dcdcdc;,margin:10px 0 10px 0;">
 		<h3>今日の気温に近いコーディネート</h3>
         <div class="row" style="margin:10px 0;" >
-        	<% @clothes_t.first(6).each do |c| %><!--現在気温おすすめコーデ6件表示-->
+        	<% @clothes_t.first(4).each do |c| %><!--現在気温おすすめコーデ6件表示-->
 		        <div class = "col-3 card-clothe">
 		        	<div class = "card" >
 			        	<%= link_to (clothe_path(c.id)) do %>
-			        	<%= attachment_image_tag c, :clothes_image, :fill, 300, 350, format: 'jpeg', fallback: "no_image.jpg",class: "img-fluid" %>
+			        		<%= attachment_image_tag c, :clothes_image, :fill, 300, 350, format: 'jpeg', fallback: "no_image.jpg",class: "img-fluid" %>
 			        	<% end %>
-					        <div class="card-body">
-						        <%= c.temperature %>℃
-						       	<%= c.user.tall %>cm
-						      	<%= c.user.nickname %>
-						    </div>
+				        <div class="card-body">
+					        <%= c.temperature %>℃
+					       	<%= c.user.tall %>cm
+					      	<%= c.user.nickname %>
+					    </div>
 				    </div>
 				</div>
     		<% end %>
 	    </div>
 	</div>
-	<div class ="container">
-		<h4>新着</h4>
+	<div class="row"><br> </div>
+	<div class ="container", style="border: 2px dashed #dcdcdc;">
+		  <%= image_tag 'new.png', :size => '50x50' %>
         <div class="row" style="margin:10px 0;" >
         	<% @clothes.reverse.each do |c| %><!--新着コーディネート-->
 	        	<div class = "col-4 card-clothe">

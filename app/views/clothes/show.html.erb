@@ -14,47 +14,54 @@
 		</div>
 	</div>
 </div>
-<div class ="container">
-		<div class="row" , style = "margin:10px 10px 10px 10px">
-			<div class ="col-7">
-				<div class = "card" >
-					<%= attachment_image_tag @clothe, :clothes_image,:fill, 550, 740, format: 'jpeg' ,class: "img-fluid"%>
-					<% if @clothe.favorited_by?(current_user) %><!-- いいね機能 -->
-						<%= link_to clothe_favorites_path(@clothe), method: :delete do %>
-							<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-							<%= @clothe.favorites.count %>いいね！
-						<% end %>
-					<% else %>
-					<%= link_to clothe_favorites_path(@clothe),method: :post do %>
-						<i class="fa fa-heart" aria-hidden="true"></i>
-							<%= @clothe.favorites.count %>いいね！
-							<% end %>
-						<% end %>
-				</div>
-			</div>
-				<div class="col-5 clothe_text">
-					<%= simple_format(@clothe.clothe_text) %>
-					<div class="edit-delet">
-						<% if @clothe.user == current_user %>
-							<%= link_to "編集", edit_clothe_path(@clothe) %>
-						<% end %>
-						<% if @clothe.user == current_user %>
-							<%= link_to "削除", clothe_path(@clothe), method: :delete %>
+<div class="container-fluid">
+	<div class ="container">
+			<div class="row">
+				<div class ="col-5">
+					<div class = "card" >
+						<%= attachment_image_tag @clothe, :clothes_image,:fill, 550, 740, format: 'jpeg' ,class: "img-fluid"%>
+						<% if user_signed_in? %>
+							<% if @clothe.favorited_by?(current_user) %><!-- いいね機能 -->
+								<%= link_to clothe_favorites_path(@clothe), method: :delete do %>
+									<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+									<%= @clothe.favorites.count %>いいね！
+								<% end %>
+							<% else %>
+							<%= link_to clothe_favorites_path(@clothe),method: :post do %>
+								<i class="fa fa-heart" aria-hidden="true"></i>
+									<%= @clothe.favorites.count %>いいね！
+									<% end %>
+								<% end %>
 						<% end %>
 					</div>
 				</div>
-		<div class="clothes-comment"><!-- コメント部分 -->
-			<% @comment.each do |comment| %>
-				<%= attachment_image_tag comment.user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50' %>
-					<%= comment.user.nickname %>
-					<%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
-					<%= comment.review %>
-			<% end %>
-			<div class = "card" >
-				<%= form_for [@clothe, @comments] do |f| %>
-					<%= f.text_area :review %>
-					<%= f.submit "コメント" %>
+				<div class="col-5 clothe_text" style =" border: 2px dashed #dcdcdc; margin: 0 10px 10px 0;">
+					<%= simple_format(@clothe.clothe_text) %>
+						<div class="edit-delet">
+							<% if @clothe.user == current_user %>
+								<i class="fas fa-cog"></i>
+								<%= link_to "編集", edit_clothe_path(@clothe) %>
+							<% end %>
+							<% if @clothe.user == current_user %>
+								<i class="fas fa-trash-alt"></i>
+								<%= link_to "削除", clothe_path(@clothe), method: :delete %>
+							<% end %>
+						</div>
+				</div>
+			</div>
+			<div class="clothes-comment"><!-- コメント部分 -->
+				<% @comment.each do |comment| %>
+					<%= attachment_image_tag comment.user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '50x50' %>
+						<%= comment.user.nickname %>
+						<%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+						<%= comment.review %>
 				<% end %>
+				<div class="review">
+					<%= form_for [@clothe, @comments] do |f| %>
+						<%= f.text_area :review %>
+						<%= f.submit "コメント" %>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,1 +1,20 @@
-eidt#user
+<div class ="container-fluid">
+	<div class="row">
+		<%= form_for(@user) do |f| %>
+			<%= f.attachment_field :user_image %>
+			<h4>気温</h4>
+			<%= f.text_field :nickname %>
+			<h4>性別</h4>
+			 <%= f.select :gender, [["男性","男性"],["女性","女性"]], :prompt => "性別" %>
+			<h4>身長</h4>
+				<%= f.text_field :tall %>
+			<h4>自己紹介</h4>
+			<%= f.text_area :introduction %>
+			<%= f.submit '更新' %>
+		<% end %>
+		<% if @user == current_user %>
+			<i class="fas fa-trash-alt"></i>
+			<%= link_to "アカウント削除", user_path(@user), method: :delete %>
+		<% end %>
+	</div>
+</div>
