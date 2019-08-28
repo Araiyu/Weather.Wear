@@ -12,7 +12,7 @@
      <div class="row">
       <div class="col-4">
         <p><%= link_to (clothes_path) do %>
-        <%= image_tag 'logo.jpg', :size => '100x100' %>
+        <%= image_tag '/images/logo.jpg', :size => '100x100' %>
         <% end %>
       </div>
       <div class="col-8">
@@ -33,7 +33,7 @@
                 <%= fa_icon("sign-out-alt 3x") %><br>
                 <%= link_to "logout", destroy_user_session_path, method: :delete %></li>
              <li class="col-2 btn6">
-              <%= attachment_image_tag current_user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "no_profile_image.jpg", size: '40x40', class: "p_image" %><br>
+              <%= attachment_image_tag current_user, :user_image, :fill, 50, 50, format: 'jpeg', fallback: "/images/no_profile_image.jpg", size: '40x40', class: "p_image" %><br>
               <%= link_to current_user.nickname, user_path(current_user.id)%></li>
               <% else %>
               <li class="col-2 btn6 ">
