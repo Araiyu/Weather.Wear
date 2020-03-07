@@ -19,7 +19,9 @@
 			</div>
 		</div>
 		<div class= "col-4">
-			<div class="introduction", style =" border: 2px dashed #dcdcdc; margin: 10px 10px 10px 0; height:180px;" ><%= @user.introduction %></div>
+			<div class="introduction", style =" border: 2px dashed #dcdcdc; margin: 10px 10px 10px 0; height:180px;" >
+					<%= @user.introduction %>
+				</div>
 			<div class="edit-delet">
 				<% if @user == current_user %>
 					<i class="fas fa-cog"></i>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	API_KEY ="b8751728158c4e7f85a34a92a0c2d5aa"
+	API_KEY = ENV["API_KEY"]
 	BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
 	IMG_URL = "http://openweathermap.org/img/w/"
 
